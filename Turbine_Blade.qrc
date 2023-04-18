@@ -1,0 +1,63 @@
+<RCC>
+    <qresource prefix="/Ticon">
+        <file>Resources/_Manage.png</file>
+        <file>Resources/6610 - View.png</file>
+        <file>Resources/Configuration.png</file>
+        <file>Resources/Delete.png</file>
+        <file>Resources/Document.png</file>
+        <file>Resources/File.png</file>
+        <file>Resources/begin.jpg</file>
+        <file>Resources/icon (1).ico</file>
+        <file>Resources/icon (1).png</file>
+        <file>Resources/icon (2).png</file>
+        <file>Resources/icon (3).png</file>
+        <file>Resources/icon (4).png</file>
+        <file>Resources/icon (5).png</file>
+        <file>Resources/icon (6).png</file>
+        <file>Resources/icon (7).png</file>
+        <file>Resources/icon (8).png</file>
+        <file>Resources/icon (9).png</file>
+        <file>Resources/icon (10).png</file>
+        <file>Resources/icon (11).png</file>
+        <file>Resources/icon (12).png</file>
+        <file>Resources/Move.png</file>
+        <file>Resources/Setting.png</file>
+        <file>Resources/iGameLogo.png</file>
+        <file>Resources/point.png</file>
+        <file>Resources/colorPoint.png</file>
+        <file>Resources/clear.png</file>
+        <file>Resources/3Dmesh.png</file>
+        <file>Resources/facefill.png</file>
+        <file>Resources/mesh.png</file>
+        <file>Resources/import1.png</file>
+        <file>Resources/import2.png</file>
+        <file>Resources/file_export_icon.png</file>
+        <file>Resources/file_import_icon.png</file>
+        <file>psblack/add_bottom.png</file>
+        <file>psblack/add_left.png</file>
+        <file>psblack/add_right.png</file>
+        <file>psblack/add_top.png</file>
+        <file>psblack/branch_close.png</file>
+        <file>psblack/branch_open.png</file>
+        <file>psblack/calendar_nextmonth.png</file>
+        <file>psblack/calendar_prevmonth.png</file>
+        <file>psblack/checkbox_checked.png</file>
+        <file>psblack/checkbox_checked_disable.png</file>
+        <file>psblack/checkbox_parcial.png</file>
+        <file>psblack/checkbox_parcial_disable.png</file>
+        <file>psblack/checkbox_unchecked.png</file>
+        <file>psblack/checkbox_unchecked_disable.png</file>
+        <file>psblack/radiobutton_checked.png</file>
+        <file>psblack/radiobutton_checked_disable.png</file>
+        <file>psblack/radiobutton_unchecked.png</file>
+        <file>psblack/radiobutton_unchecked_disable.png</file>
+        <file>Resources/arrow_click_cursor_pointer_icon (1).png</file>
+        <file>Resources/arrow_click_cursor_pointer_icon .png</file>
+        <file>Resources/arrow_click_cursor_pointer_icon.png</file>
+        <file>Resources/knife_cutter_cut_cutlery_cutting_icon.png</file>
+    </qresource>
+    <qresource prefix="/shader">
+        <file>color.frag</file>
+        <file>color.vert</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,19 @@
+<xml>
+ <curve>
+  <degree>3</degree>
+  <number>4</number>
+  <knots>0 0 0 0 1 1 1 1  </knots>
+  <weights> 1 1 1 1 </weights>
+  <points>
+     0 0 0 
+     1 1 0 
+     2 1 0 
+     3 0 0 
+  </points>
+  </curve>
+  <boundary>
+    0 0
+    0 1
+   </boundary>
+
+</xml>

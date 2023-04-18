@@ -1,0 +1,3075 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1213</width>
+    <height>863</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="Turbine_Blade.qrc">
+    <normaloff>:/Ticon/Resources/iGameLogo.png</normaloff>:/Ticon/Resources/iGameLogo.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+				QPalette{background:#444444;}*{outline:0px;color:#DCDCDC;}
+
+				QWidget
+				{
+				color: #F0F0D0;
+				background-color: #323232;
+				border: 0px solid #32414B;
+				padding: 0px;
+				selection-background-color: #1464A0;
+				selection-color: #F0F0F0;
+				}
+
+				QWidget:item:hover
+				{
+				background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #ca0619);
+				color: #000000;
+				}
+
+				QWidget:item:selected
+				{
+				background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #ffa02f, stop: 1 #d7801a);
+				}
+
+				QWidget[form=&quot;true&quot;],QLabel[frameShape=&quot;1&quot;]{
+				border:1px solid #242424;
+				border-radius:0px;
+				}
+
+				QWidget[form=&quot;bottom&quot;]{
+				background:#484848;
+				}
+
+				QWidget[form=&quot;bottom&quot;] .QFrame{
+				border:1px solid #DCDCDC;
+				}
+
+				QWidget[form=&quot;bottom&quot;] QLabel,QWidget[form=&quot;title&quot;] QLabel{
+				border-radius:0px;
+				color:#DCDCDC;
+				background:none;
+				border-style:none;
+				}
+
+				QWidget[form=&quot;title&quot;],QWidget[nav=&quot;left&quot;],QWidget[nav=&quot;top&quot;] QAbstractButton{
+				border-style:none;
+				border-radius:0px;
+				padding:5px;
+				color:#DCDCDC;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);
+				}
+
+				QWidget[nav=&quot;top&quot;] QAbstractButton:hover,QWidget[nav=&quot;top&quot;] QAbstractButton:pressed,QWidget[nav=&quot;top&quot;] QAbstractButton:checked{
+				border-style:solid;
+				border-width:0px 0px 2px 0px;
+				padding:4px 4px 2px 4px;
+				border-color:#00BB9E;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #646464,stop:1 #525252);
+				}
+
+				QWidget[nav=&quot;left&quot;] QAbstractButton{
+				border-radius:0px;
+				color:#DCDCDC;
+				background:none;
+				border-style:none;
+				}
+
+				QWidget[nav=&quot;left&quot;] QAbstractButton:hover{
+				color:#FFFFFF;
+				background-color:#00BB9E;
+				}
+
+				QWidget[nav=&quot;left&quot;] QAbstractButton:checked,QWidget[nav=&quot;left&quot;] QAbstractButton:pressed{
+				color:#DCDCDC;
+				border-style:solid;
+				border-width:0px 0px 0px 2px;
+				padding:4px 4px 4px 2px;
+				border-color:#00BB9E;
+				background-color:#444444;
+				}
+
+				QWidget[video=&quot;true&quot;] QLabel{
+				color:#DCDCDC;
+				border:1px solid #242424;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);
+				}
+
+				QWidget[video=&quot;true&quot;] QLabel:focus{
+				border:1px solid #00BB9E;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #646464,stop:1 #525252);
+				}
+
+				QLineEdit,QTextEdit,QPlainTextEdit,QSpinBox,QDoubleSpinBox,QComboBox,QDateEdit,QTimeEdit,QDateTimeEdit{
+				border:1px solid #242424;
+				border-radius:3px;
+				padding:2px;
+				background:none;
+				selection-background-color:#484848;
+				selection-color:#DCDCDC;
+				}
+
+				QLineEdit:focus,QTextEdit:focus,QPlainTextEdit:focus,QSpinBox:focus,QDoubleSpinBox:focus,QComboBox:focus,QDateEdit:focus,QTimeEdit:focus,QDateTimeEdit:focus,QLineEdit:hover,QTextEdit:hover,QPlainTextEdit:hover,QSpinBox:hover,QDoubleSpinBox:hover,QComboBox:hover,QDateEdit:hover,QTimeEdit:hover,QDateTimeEdit:hover{
+				border:1px solid #242424;
+				}
+
+				QLineEdit[echoMode=&quot;2&quot;]{
+				lineedit-password-character:9679;
+				}
+
+				.QFrame{
+				border:1px solid #242424;
+				border-radius:3px;
+				}
+
+				.QGroupBox{
+				border:1px solid #242424;
+				border-radius:5px;
+				margin-top:2ex;
+				}
+
+				.QGroupBox::title{
+				subcontrol-origin:margin;
+				position:relative;
+				left:10px;
+				}
+
+				.QPushButton,.QToolButton{
+				border-style:none;
+				border:1px solid #242424;
+				color:#DCDCDC;
+				padding:5px;
+				min-height:13px;
+				border-radius:4px;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);
+				}
+
+				.QPushButton:hover,.QToolButton:hover{
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #646464,stop:1 #525252);
+				}
+
+				.QPushButton:pressed,.QToolButton:pressed{
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);
+				}
+
+				.QToolButton::menu-indicator{
+				image:None;
+				}
+
+				QToolButton#btnMenu,QPushButton#btnMenu_Min,QPushButton#btnMenu_Max,QPushButton#btnMenu_Close{
+				border-radius:3px;
+				color:#DCDCDC;
+				padding:3px;
+				margin:0px;
+				background:none;
+				border-style:none;
+				}
+
+				QToolButton#btnMenu:hover,QPushButton#btnMenu_Min:hover,QPushButton#btnMenu_Max:hover{
+				color:#FFFFFF;
+				margin:1px 1px 2px 1px;
+				background-color:rgba(51,127,209,230);
+				}
+
+				QPushButton#btnMenu_Close:hover{
+				color:#FFFFFF;
+				margin:1px 1px 2px 1px;
+				background-color:rgba(238,0,0,128);
+				}
+
+				QRadioButton::indicator{
+				width:15px;
+				height:15px;
+				}
+
+				QRadioButton::indicator::unchecked{
+				image:url(:/Ticon/psblack/radiobutton_unchecked.png);
+				}
+
+				QRadioButton::indicator::unchecked:disabled{
+				image:url(:/Ticon/psblack/radiobutton_unchecked_disable.png);
+				}
+
+				QRadioButton::indicator::checked{
+				image:url(:/Ticon/psblack/radiobutton_checked.png);
+				}
+
+				QRadioButton::indicator::checked:disabled{
+				image:url(:/Ticon/psblack/radiobutton_checked_disable.png);
+				}
+
+				QGroupBox::indicator,QTreeWidget::indicator,QListWidget::indicator{
+				padding:0px -3px 0px 3px;
+				}
+
+				QCheckBox::indicator,QGroupBox::indicator,QTreeWidget::indicator,QListWidget::indicator{
+				width:13px;
+				height:13px;
+				}
+
+				QCheckBox::indicator:unchecked,QGroupBox::indicator:unchecked,QTreeWidget::indicator:unchecked,QListWidget::indicator:unchecked{
+				image:url(:/Ticon/psblack/checkbox_unchecked.png);
+				}
+
+				QCheckBox::indicator:unchecked:disabled,QGroupBox::indicator:unchecked:disabled,QTreeWidget::indicator:unchecked:disabled,QListWidget::indicator:disabled{
+				image:url(:/Ticon/psblack/checkbox_unchecked_disable.png);
+				}
+
+				QCheckBox::indicator:checked,QGroupBox::indicator:checked,QTreeWidget::indicator:checked,QListWidget::indicator:checked{
+				image:url(:/Ticon/psblack/checkbox_checked.png);
+				}
+
+				QCheckBox::indicator:checked:disabled,QGroupBox::indicator:checked:disabled,QTreeWidget::indicator:checked:disabled,QListWidget::indicator:checked:disabled{
+				image:url(:/Ticon/psblack/checkbox_checked_disable.png);
+				}
+
+				QCheckBox::indicator:indeterminate,QGroupBox::indicator:indeterminate,QTreeWidget::indicator:indeterminate,QListWidget::indicator:indeterminate{
+				image:url(:/Ticon/psblack/checkbox_parcial.png);
+				}
+
+				QCheckBox::indicator:indeterminate:disabled,QGroupBox::indicator:indeterminate:disabled,QTreeWidget::indicator:indeterminate:disabled,QListWidget::indicator:indeterminate:disabled{
+				image:url(:/Ticon/psblack/checkbox_parcial_disable.png);
+				}
+
+				QTimeEdit::up-button,QDateEdit::up-button,QDateTimeEdit::up-button,QDoubleSpinBox::up-button,QSpinBox::up-button{
+				image:url(:/Ticon/psblack/add_top.png);
+				width:10px;
+				height:10px;
+				padding:1px 5px 0px 0px;
+				}
+
+				QTimeEdit::down-button,QDateEdit::down-button,QDateTimeEdit::down-button,QDoubleSpinBox::down-button,QSpinBox::down-button{
+				image:url(:/Ticon/psblack/add_bottom.png);
+				width:10px;
+				height:10px;
+				padding:1px 5px 0px 0px;
+				}
+
+				QTimeEdit::up-button:pressed,QDateEdit::up-button:pressed,QDateTimeEdit::up-button:pressed,QDoubleSpinBox::up-button:pressed,QSpinBox::up-button:pressed{
+				top:-2px;
+				}
+
+				QTimeEdit::down-button:pressed,QDateEdit::down-button:pressed,QDateTimeEdit::down-button:pressed,QDoubleSpinBox::down-button:pressed,QSpinBox::down-button:pressed,QSpinBox::down-button:pressed{
+				bottom:-2px;
+				}
+
+				QComboBox::down-arrow,QDateEdit[calendarPopup=&quot;true&quot;]::down-arrow,QTimeEdit[calendarPopup=&quot;true&quot;]::down-arrow,QDateTimeEdit[calendarPopup=&quot;true&quot;]::down-arrow{
+				image:url(:/Ticon/psblack/add_bottom.png);
+				width:10px;
+				height:10px;
+				right:2px;
+				}
+
+				QComboBox::drop-down,QDateEdit::drop-down,QTimeEdit::drop-down,QDateTimeEdit::drop-down{
+				subcontrol-origin:padding;
+				subcontrol-position:top right;
+				width:15px;
+				border-left-width:0px;
+				border-left-style:solid;
+				border-top-right-radius:3px;
+				border-bottom-right-radius:3px;
+				border-left-color:#242424;
+				}
+
+				QComboBox::drop-down:on{
+				top:1px;
+				}
+
+				QMenuBar::item{
+				color:#DCDCDC;
+				background-color:#484848;
+				margin:0px;
+				padding:3px 10px;
+				}
+
+				QMenu,QMenuBar,QMenu:disabled,QMenuBar:disabled{
+				color:#DCDCDC;
+				background-color:#484848;
+				border:1px solid #242424;
+				margin:0px;
+				}
+
+				QMenu::item{
+				padding:3px 20px;
+				}
+
+				QMenu::indicator{
+				width:13px;
+				height:13px;
+				}
+
+				QMenu::item:selected,QMenuBar::item:selected{
+				color:#DCDCDC;
+				border:0px solid #242424;
+				background:#646464;
+				}
+
+				QMenu::separator{
+				height:1px;
+				background:#242424;
+				}
+
+				QProgressBar{
+				min-height:10px;
+				background:#484848;
+				border-radius:5px;
+				text-align:center;
+				border:1px solid #484848;
+				}
+
+				QProgressBar:chunk{
+				border-radius:5px;
+				background-color:#242424;
+				}
+
+				QSlider::groove:horizontal{
+				background:#484848;
+				height:8px;
+				border-radius:4px;
+				}
+
+				QSlider::add-page:horizontal{
+				background:#484848;
+				height:8px;
+				border-radius:4px;
+				}
+
+				QSlider::sub-page:horizontal{
+				background:#242424;
+				height:8px;
+				border-radius:4px;
+				}
+
+				QSlider::handle:horizontal{
+				width:13px;
+				margin-top:-3px;
+				margin-bottom:-3px;
+				border-radius:6px;
+				background:qradialgradient(spread:pad,cx:0.5,cy:0.5,radius:0.5,fx:0.5,fy:0.5,stop:0.6 #444444,stop:0.8 #242424);
+				}
+
+				QSlider::groove:vertical{
+				width:8px;
+				border-radius:4px;
+				background:#484848;
+				}
+
+				QSlider::add-page:vertical{
+				width:8px;
+				border-radius:4px;
+				background:#484848;
+				}
+
+				QSlider::sub-page:vertical{
+				width:8px;
+				border-radius:4px;
+				background:#242424;
+				}
+
+				QSlider::handle:vertical{
+				height:14px;
+				margin-left:-3px;
+				margin-right:-3px;
+				border-radius:6px;
+				background:qradialgradient(spread:pad,cx:0.5,cy:0.5,radius:0.5,fx:0.5,fy:0.5,stop:0.6 #444444,stop:0.8 #242424);
+				}
+
+				QScrollBar:horizontal{
+				background:#484848;
+				padding:0px;
+				border-radius:1px;
+				max-height:8px;
+				}
+
+				QScrollBar::handle:horizontal{
+				background:#525252;
+				min-width:50px;
+				border-radius:3px;
+				}
+
+				QScrollBar::handle:horizontal:hover{
+				background:#242424;
+				}
+
+				QScrollBar::handle:horizontal:pressed{
+				background:#242424;
+				}
+
+				QScrollBar::add-page:horizontal{
+				background:none;
+				}
+
+				QScrollBar::sub-page:horizontal{
+				background:none;
+				}
+
+				QScrollBar::add-line:horizontal{
+				background:none;
+				}
+
+				QScrollBar::sub-line:horizontal{
+				background:none;
+				}
+
+				QScrollBar:vertical{
+				background:#484848;
+				padding:0px;
+				border-radius:2px;
+				max-width:9px;
+				}
+
+				QScrollBar::handle:vertical{
+				background:#525252;
+				min-height:50px;
+				border-radius:6px;
+				}
+
+				QScrollBar::handle:vertical:hover{
+				background:#242424;
+				}
+
+				QScrollBar::handle:vertical:pressed{
+				background:#242424;
+				}
+
+				QScrollBar::add-page:vertical{
+				background:none;
+				}
+
+				QScrollBar::sub-page:vertical{
+				background:none;
+				}
+
+				QScrollBar::add-line:vertical{
+				background:none;
+				}
+
+				QScrollBar::sub-line:vertical{
+				background:none;
+				}
+
+				QScrollArea{
+				border:0px;
+				}
+
+				QTreeView,QListView,QTableView,QTabWidget::pane{
+				border:1px solid #242424;
+				selection-background-color:#646464;
+				selection-color:#DCDCDC;
+				alternate-background-color:#525252;
+				gridline-color:#242424;
+				}
+
+				QTreeView::branch:closed:has-children{
+				margin:4px;
+				border-image:url(branch_open.png);
+				}
+
+				QTreeView::branch:open:has-children{
+				margin:4px;
+				border-image:url(branch_close.png);
+				}
+
+				QTreeView,QListView,QTableView,QSplitter::handle,QTreeView::branch{
+				background:#444444;
+				}
+
+				QTableView::item:selected,QListView::item:selected,QTreeView::item:selected{
+				color:#DCDCDC;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);
+				}
+
+				QTableView::item:hover,QListView::item:hover,QTreeView::item:hover{
+				color:#DCDCDC;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #646464,stop:1 #525252);
+				}
+
+				QTableView::item,QListView::item,QTreeView::item{
+				padding:1px;
+				margin:0px;
+				}
+
+				QHeaderView::section,QTableCornerButton:section{
+				padding:3px;
+				margin:0px;
+				color:#DCDCDC;
+				border:1px solid #242424;
+				border-left-width:0px;
+				border-right-width:1px;
+				border-top-width:0px;
+				border-bottom-width:1px;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #646464,stop:1 #525252);
+				}
+
+				QTabBar::tab{
+				border:1px solid #242424;
+				color:#DCDCDC;
+				margin:0px;
+				border-style: solid;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #646464,stop:1 #525252);
+				}
+
+				QTabBar::tab:selected,QTabBar::tab:hover{
+				border-style:solid;
+				border-color:#00BB9E;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);
+				}
+
+				QTabBar::tab:top,QTabBar::tab:bottom{
+				padding:3px 8px 3px 8px;
+				}
+
+				QTabBar::tab:left,QTabBar::tab:right{
+				padding:8px 3px 8px 3px;
+				}
+
+				QTabBar::tab:top:selected,QTabBar::tab:top:hover{
+				border-width:2px 0px 0px 0px;
+				}
+
+				QTabBar::tab:right:selected,QTabBar::tab:right:hover{
+				border-width:0px 0px 0px 2px;
+				}
+
+				QTabBar::tab:bottom:selected,QTabBar::tab:bottom:hover{
+				border-width:0px 0px 2px 0px;
+				}
+
+				QTabBar::tab:left:selected,QTabBar::tab:left:hover{
+				border-width:0px 2px 0px 0px;
+				}
+
+				QTabBar::tab:first:top:selected,QTabBar::tab:first:top:hover,QTabBar::tab:first:bottom:selected,QTabBar::tab:first:bottom:hover{
+				border-left-width:1px;
+				border-left-color:#242424;
+				}
+
+				QTabBar::tab:first:left:selected,QTabBar::tab:first:left:hover,QTabBar::tab:first:right:selected,QTabBar::tab:first:right:hover{
+				border-top-width:1px;
+				border-top-color:#242424;
+				}
+
+				QTabBar::tab:last:top:selected,QTabBar::tab:last:top:hover,QTabBar::tab:last:bottom:selected,QTabBar::tab:last:bottom:hover{
+				border-right-width:1px;
+				border-right-color:#242424;
+				}
+
+				QTabBar::tab:last:left:selected,QTabBar::tab:last:left:hover,QTabBar::tab:last:right:selected,QTabBar::tab:last:right:hover{
+				border-bottom-width:1px;
+				border-bottom-color:#242424;
+				}
+
+				QStatusBar::item{
+				border:0px solid #484848;
+				border-radius:3px;
+				}
+				QToolBox{
+				color: #b1b1b1;
+				background-color: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #565656, stop: 0.1 #525252, stop: 0.5 #4e4e4e, stop: 0.9 #4a4a4a, stop: 1 #464646);
+				border-width: 2px;
+				border-color: #1e1e1e;
+				border-style: solid;
+				border-radius: 6;
+				padding: 3px;
+				font-size: 12px;
+				padding-left: 5px;
+				padding-right: 5px;
+				}
+
+				QToolBox::tab,QGroupBox#gboxDevicePanel,QGroupBox#gboxDeviceTitle,QFrame#gboxDevicePanel,QFrame#gboxDeviceTitle{
+				padding:1px;
+				border-radius:5px;
+				color:#DCDCDC;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);
+				}
+
+				QToolTip{
+				border:1px solid #DCDCDC;
+				padding:2px;
+				color:#DCDCDC;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);
+				opacity: 230;
+				}
+
+				QToolBox::tab:selected{
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #646464,stop:1 #525252);
+				border-bottom: 1px solid #14506B;
+				border-top: 1px solid #14506B;
+				border-left: 1px solid #14506B;
+				border-right: 1px solid #14506B;
+				}
+
+				QPrintPreviewDialog QToolButton{
+				border:0px solid #DCDCDC;
+				border-radius:0px;
+				margin:0px;
+				padding:3px;
+				background:none;
+				}
+
+				QColorDialog QPushButton,QFileDialog QPushButton{
+				min-width:80px;
+				}
+
+				QToolButton#qt_calendar_prevmonth{
+				icon-size:0px;
+				min-width:20px;
+				image:url(:/Ticon/psblack/calendar_prevmonth.png);
+				}
+
+				QToolButton#qt_calendar_nextmonth{
+				icon-size:0px;
+				min-width:20px;
+				image:url(:/Ticon/psblack/calendar_nextmonth.png)
+				}
+
+				QToolButton#qt_calendar_prevmonth,QToolButton#qt_calendar_nextmonth,QToolButton#qt_calendar_monthbutton,QToolButton#qt_calendar_yearbutton{
+				border:0px solid #DCDCDC;
+				border-radius:3px;
+				margin:3px 3px 3px 3px;
+				padding:3px;
+				background:none;
+				}
+
+				QToolButton#qt_calendar_prevmonth:hover,QToolButton#qt_calendar_nextmonth:hover,QToolButton#qt_calendar_monthbutton:hover,QToolButton#qt_calendar_yearbutton:hover,QToolButton#qt_calendar_prevmonth:pressed,QToolButton#qt_calendar_nextmonth:pressed,QToolButton#qt_calendar_monthbutton:pressed,QToolButton#qt_calendar_yearbutton:pressed{
+				border:1px solid #242424;
+				}
+
+				QCalendarWidget QSpinBox#qt_calendar_yearedit{
+				margin:2px;
+				}
+
+				QCalendarWidget QToolButton::menu-indicator{
+				image:None;
+				}
+
+				QCalendarWidget QTableView{
+				border-width:0px;
+				}
+
+				QCalendarWidget QWidget#qt_calendar_navigationbar{
+				border:1px solid #242424;
+				border-width:1px 1px 0px 1px;
+				background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #484848,stop:1 #383838);
+				}
+
+				QComboBox QAbstractItemView::item{
+				min-height:20px;
+				min-width:10px;
+				}
+
+				QTableView[model=&quot;true&quot;]::item{
+				padding:0px;
+				margin:0px;
+				}
+
+				QTableView QLineEdit,QTableView QComboBox,QTableView QSpinBox,QTableView QDoubleSpinBox,QTableView QDateEdit,QTableView QTimeEdit,QTableView QDateTimeEdit{
+				border-width:0px;
+				border-radius:0px;
+				}
+
+				QTableView QLineEdit:focus,QTableView QComboBox:focus,QTableView QSpinBox:focus,QTableView QDoubleSpinBox:focus,QTableView QDateEdit:focus,QTableView QTimeEdit:focus,QTableView QDateTimeEdit:focus{
+				border-width:0px;
+				border-radius:0px;
+				}
+
+				QLineEdit,QTextEdit,QPlainTextEdit,QSpinBox,QDoubleSpinBox,QComboBox,QDateEdit,QTimeEdit,QDateTimeEdit{
+				background:#444444;
+				}
+			</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>2</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_17" stretch="4,8,1">
+      <property name="spacing">
+       <number>1</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QTabWidget" name="funcTab">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>280</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>300</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="sizeIncrement">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
+        <property name="toolTipDuration">
+         <number>0</number>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="tabPosition">
+         <enum>QTabWidget::North</enum>
+        </property>
+        <property name="tabShape">
+         <enum>QTabWidget::Rounded</enum>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>42</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="elideMode">
+         <enum>Qt::ElideNone</enum>
+        </property>
+        <property name="usesScrollButtons">
+         <bool>true</bool>
+        </property>
+        <property name="documentMode">
+         <bool>false</bool>
+        </property>
+        <property name="tabsClosable">
+         <bool>false</bool>
+        </property>
+        <property name="movable">
+         <bool>false</bool>
+        </property>
+        <property name="tabBarAutoHide">
+         <bool>true</bool>
+        </property>
+        <widget class="QWidget" name="TriMesh">
+         <attribute name="title">
+          <string>网格</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_7" stretch="2,8">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="styleSheet">
+             <string notr="true">image: url(:/Ticon/Resources/iGameLogo.png);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTabWidget" name="tabWidget">
+            <property name="font">
+             <font>
+              <family>黑体</family>
+              <pointsize>10</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QTabBar::tab{width:100}</string>
+            </property>
+            <property name="tabPosition">
+             <enum>QTabWidget::North</enum>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <property name="usesScrollButtons">
+             <bool>true</bool>
+            </property>
+            <widget class="QWidget" name="tab2">
+             <attribute name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/icon (1).ico</normaloff>:/Ticon/Resources/icon (1).ico</iconset>
+             </attribute>
+             <attribute name="title">
+              <string>NURBS</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_21">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QScrollArea" name="scrollArea_3">
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents_3">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>296</width>
+                   <height>649</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_20">
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_3">
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_5">
+                     <property name="leftMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>5</number>
+                     </property>
+                     <item>
+                      <widget class="QTabWidget" name="tabWidget_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                         <horstretch>20</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>黑体</family>
+                         <pointsize>10</pointsize>
+                         <weight>50</weight>
+                         <bold>false</bold>
+                         <kerning>true</kerning>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QTabBar::tab{width:60}</string>
+                       </property>
+                       <property name="currentIndex">
+                        <number>0</number>
+                       </property>
+                       <widget class="QWidget" name="tab">
+                        <attribute name="title">
+                         <string>曲线</string>
+                        </attribute>
+                        <widget class="QWidget" name="layoutWidget">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>0</y>
+                           <width>260</width>
+                           <height>41</height>
+                          </rect>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_8">
+                          <item>
+                           <widget class="QPushButton" name="btnOpenCurve">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>导入NURBS曲线</string>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="Turbine_Blade.qrc">
+                              <normaloff>:/Ticon/Resources/icon (4).png</normaloff>:/Ticon/Resources/icon (4).png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>20</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="btnSaveCurve">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>保存NURBS曲线</string>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="Turbine_Blade.qrc">
+                              <normaloff>:/Ticon/Resources/icon (5).png</normaloff>:/Ticon/Resources/icon (5).png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>18</width>
+                              <height>18</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                        <widget class="QSpinBox" name="curveControlCnt">
+                         <property name="geometry">
+                          <rect>
+                           <x>90</x>
+                           <y>90</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>4</number>
+                         </property>
+                        </widget>
+                        <widget class="QPushButton" name="bthGenerateCurve">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>190</y>
+                           <width>241</width>
+                           <height>41</height>
+                          </rect>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>黑体</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>生成</string>
+                         </property>
+                        </widget>
+                        <widget class="QWidget" name="layoutWidget_4">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>40</y>
+                           <width>251</width>
+                           <height>41</height>
+                          </rect>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_21">
+                          <item>
+                           <widget class="QLabel" name="label_5">
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>自定义参数</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_8">
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>控制点个数</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_9">
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>次数</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                        <widget class="QSpinBox" name="curveControlDegree">
+                         <property name="geometry">
+                          <rect>
+                           <x>180</x>
+                           <y>90</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>1</number>
+                         </property>
+                         <property name="value">
+                          <number>1</number>
+                         </property>
+                        </widget>
+                        <widget class="QLabel" name="label_10">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>90</y>
+                           <width>61</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>黑体</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>u方向：</string>
+                         </property>
+                        </widget>
+                       </widget>
+                       <widget class="QWidget" name="tab_2">
+                        <attribute name="title">
+                         <string>曲面</string>
+                        </attribute>
+                        <widget class="QSpinBox" name="surfaceControlCnt_u">
+                         <property name="geometry">
+                          <rect>
+                           <x>90</x>
+                           <y>90</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>4</number>
+                         </property>
+                        </widget>
+                        <widget class="QPushButton" name="bthGenrateSurface">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>190</y>
+                           <width>241</width>
+                           <height>41</height>
+                          </rect>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>黑体</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>生成</string>
+                         </property>
+                        </widget>
+                        <widget class="QSpinBox" name="surfaceControlCnt_v">
+                         <property name="geometry">
+                          <rect>
+                           <x>90</x>
+                           <y>120</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>4</number>
+                         </property>
+                        </widget>
+                        <widget class="QWidget" name="layoutWidget_3">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>0</y>
+                           <width>260</width>
+                           <height>41</height>
+                          </rect>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_9">
+                          <item>
+                           <widget class="QPushButton" name="btnOpenSurface">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>导入NURBS曲面</string>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="Turbine_Blade.qrc">
+                              <normaloff>:/Ticon/Resources/icon (4).png</normaloff>:/Ticon/Resources/icon (4).png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>20</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="btnSaveSurface">
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>保存NURBS曲面</string>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="Turbine_Blade.qrc">
+                              <normaloff>:/Ticon/Resources/icon (5).png</normaloff>:/Ticon/Resources/icon (5).png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>18</width>
+                              <height>18</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                        <widget class="QWidget" name="layoutWidget_5">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>40</y>
+                           <width>251</width>
+                           <height>41</height>
+                          </rect>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_22">
+                          <item>
+                           <widget class="QLabel" name="label_11">
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>自定义参数</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_12">
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>控制点个数</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_13">
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>次数</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                        <widget class="QLabel" name="label_17">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>90</y>
+                           <width>61</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>黑体</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>u方向：</string>
+                         </property>
+                        </widget>
+                        <widget class="QSpinBox" name="surfaceControlDegree_u">
+                         <property name="geometry">
+                          <rect>
+                           <x>180</x>
+                           <y>90</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>1</number>
+                         </property>
+                         <property name="value">
+                          <number>1</number>
+                         </property>
+                        </widget>
+                        <widget class="QLabel" name="label_18">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>120</y>
+                           <width>61</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>黑体</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>v方向：</string>
+                         </property>
+                        </widget>
+                        <widget class="QSpinBox" name="surfaceControlDegree_v">
+                         <property name="geometry">
+                          <rect>
+                           <x>180</x>
+                           <y>120</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>1</number>
+                         </property>
+                         <property name="value">
+                          <number>1</number>
+                         </property>
+                        </widget>
+                       </widget>
+                       <widget class="QWidget" name="tab_3">
+                        <attribute name="title">
+                         <string>曲体</string>
+                        </attribute>
+                        <widget class="QWidget" name="layoutWidget_2">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>0</y>
+                           <width>260</width>
+                           <height>41</height>
+                          </rect>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_11">
+                          <item>
+                           <widget class="QPushButton" name="btnOpenVolume">
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>导入NURBS曲体</string>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="Turbine_Blade.qrc">
+                              <normaloff>:/Ticon/Resources/icon (4).png</normaloff>:/Ticon/Resources/icon (4).png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>20</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="btnSaveVolume">
+                            <property name="maximumSize">
+                             <size>
+                              <width>16777215</width>
+                              <height>25</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>保存NURBS曲体</string>
+                            </property>
+                            <property name="icon">
+                             <iconset resource="Turbine_Blade.qrc">
+                              <normaloff>:/Ticon/Resources/icon (5).png</normaloff>:/Ticon/Resources/icon (5).png</iconset>
+                            </property>
+                            <property name="iconSize">
+                             <size>
+                              <width>18</width>
+                              <height>18</height>
+                             </size>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                        <widget class="QSpinBox" name="volumeControlCnt_u">
+                         <property name="geometry">
+                          <rect>
+                           <x>90</x>
+                           <y>90</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>4</number>
+                         </property>
+                        </widget>
+                        <widget class="QSpinBox" name="volumeControlCnt_v">
+                         <property name="geometry">
+                          <rect>
+                           <x>90</x>
+                           <y>120</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>4</number>
+                         </property>
+                        </widget>
+                        <widget class="QSpinBox" name="volumeControlCnt_w">
+                         <property name="geometry">
+                          <rect>
+                           <x>90</x>
+                           <y>150</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>4</number>
+                         </property>
+                        </widget>
+                        <widget class="QPushButton" name="bthGenrateVolume">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>190</y>
+                           <width>241</width>
+                           <height>41</height>
+                          </rect>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>黑体</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>生成</string>
+                         </property>
+                        </widget>
+                        <widget class="QWidget" name="layoutWidget_6">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>40</y>
+                           <width>251</width>
+                           <height>41</height>
+                          </rect>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_23">
+                          <item>
+                           <widget class="QLabel" name="label_14">
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>自定义参数</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_15">
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>控制点个数</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QLabel" name="label_16">
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>10</pointsize>
+                             </font>
+                            </property>
+                            <property name="text">
+                             <string>次数</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                        <widget class="QLabel" name="label_22">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>120</y>
+                           <width>61</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>黑体</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>v方向：</string>
+                         </property>
+                        </widget>
+                        <widget class="QLabel" name="label_23">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>90</y>
+                           <width>61</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>黑体</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>u方向：</string>
+                         </property>
+                        </widget>
+                        <widget class="QLabel" name="label_24">
+                         <property name="geometry">
+                          <rect>
+                           <x>10</x>
+                           <y>150</y>
+                           <width>61</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>黑体</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>w方向：</string>
+                         </property>
+                        </widget>
+                        <widget class="QSpinBox" name="volumeControlDegree_u">
+                         <property name="geometry">
+                          <rect>
+                           <x>180</x>
+                           <y>90</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>1</number>
+                         </property>
+                         <property name="value">
+                          <number>1</number>
+                         </property>
+                        </widget>
+                        <widget class="QSpinBox" name="volumeControlDegree_v">
+                         <property name="geometry">
+                          <rect>
+                           <x>180</x>
+                           <y>120</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>1</number>
+                         </property>
+                         <property name="value">
+                          <number>1</number>
+                         </property>
+                        </widget>
+                        <widget class="QSpinBox" name="volumeControlDegree_w">
+                         <property name="geometry">
+                          <rect>
+                           <x>180</x>
+                           <y>150</y>
+                           <width>71</width>
+                           <height>21</height>
+                          </rect>
+                         </property>
+                         <property name="minimum">
+                          <number>1</number>
+                         </property>
+                         <property name="value">
+                          <number>1</number>
+                         </property>
+                        </widget>
+                       </widget>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+            <widget class="QWidget" name="tab3">
+             <attribute name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/Configuration.png</normaloff>:/Ticon/Resources/Configuration.png</iconset>
+             </attribute>
+             <attribute name="title">
+              <string>操作</string>
+             </attribute>
+             <layout class="QVBoxLayout" name="verticalLayout_23">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QScrollArea" name="scrollArea_4">
+                <property name="horizontalScrollBarPolicy">
+                 <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+                <property name="widgetResizable">
+                 <bool>true</bool>
+                </property>
+                <widget class="QWidget" name="scrollAreaWidgetContents_4">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>296</width>
+                   <height>649</height>
+                  </rect>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_22">
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_15">
+                    <property name="title">
+                     <string>Mesh Choose</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_27">
+                     <property name="leftMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>5</number>
+                     </property>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_3">
+                       <item>
+                        <widget class="QPushButton" name="btnLastMesh">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>黑体</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>上一网格</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="Turbine_Blade.qrc">
+                           <normaloff>:/Ticon/Resources/arrow_click_cursor_pointer_icon.png</normaloff>:/Ticon/Resources/arrow_click_cursor_pointer_icon.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>30</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="btnNextMesh">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>黑体</family>
+                           <pointsize>10</pointsize>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>下一网格</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="Turbine_Blade.qrc">
+                           <normaloff>:/Ticon/Resources/arrow_click_cursor_pointer_icon (1).png</normaloff>:/Ticon/Resources/arrow_click_cursor_pointer_icon (1).png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>30</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_6">
+                    <property name="title">
+                     <string>Information</string>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_8">
+                     <property name="leftMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>5</number>
+                     </property>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_4">
+                       <item>
+                        <widget class="QPushButton" name="btnInfoClear">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string>Clear</string>
+                         </property>
+                         <property name="icon">
+                          <iconset>
+                           <normaloff>:/Ticon/Resources/清空.png</normaloff>:/Ticon/Resources/清空.png</iconset>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QPushButton" name="btnInfoCopy">
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                         <property name="text">
+                          <string>Copy</string>
+                         </property>
+                         <property name="icon">
+                          <iconset resource="Turbine_Blade.qrc">
+                           <normaloff>:/Ticon/Resources/icon (2).png</normaloff>:/Ticon/Resources/icon (2).png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>18</width>
+                           <height>18</height>
+                          </size>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_13">
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <property name="sizeConstraint">
+                      <enum>QLayout::SetDefaultConstraint</enum>
+                     </property>
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>0</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_5">
+                       <property name="title">
+                        <string>Edit Mode</string>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_13">
+                        <property name="leftMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>5</number>
+                        </property>
+                        <item>
+                         <widget class="QRadioButton" name="rtnModelView">
+                          <property name="text">
+                           <string>观察模式</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="Turbine_Blade.qrc">
+                            <normaloff>:/Ticon/Resources/6610 - View.png</normaloff>:/Ticon/Resources/6610 - View.png</iconset>
+                          </property>
+                          <property name="checked">
+                           <bool>true</bool>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QRadioButton" name="rtnPickItem">
+                          <property name="text">
+                           <string>点选模式</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="Turbine_Blade.qrc">
+                            <normaloff>:/Ticon/Resources/arrow_click_cursor_pointer_icon .png</normaloff>:/Ticon/Resources/arrow_click_cursor_pointer_icon .png</iconset>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QRadioButton" name="rtnModelCut">
+                          <property name="text">
+                           <string>切割模式</string>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="Turbine_Blade.qrc">
+                            <normaloff>:/Ticon/Resources/knife_cutter_cut_cutlery_cutting_icon.png</normaloff>:/Ticon/Resources/knife_cutter_cut_cutlery_cutting_icon.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>14</width>
+                            <height>14</height>
+                           </size>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QGroupBox" name="groupBox_11">
+                       <property name="title">
+                        <string>Edit</string>
+                       </property>
+                       <layout class="QVBoxLayout" name="verticalLayout_9">
+                        <property name="leftMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>5</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>5</number>
+                        </property>
+                        <item>
+                         <spacer name="spacer">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <layout class="QVBoxLayout" name="verticalLayout_12">
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_7">
+                            <item>
+                             <widget class="QGroupBox" name="groupBox_8">
+                              <property name="title">
+                               <string>PickItem</string>
+                              </property>
+                              <layout class="QVBoxLayout" name="verticalLayout_3">
+                               <item>
+                                <layout class="QHBoxLayout" name="horizontalLayout_13">
+                                 <item>
+                                  <widget class="QRadioButton" name="rtnPickPoint">
+                                   <property name="text">
+                                    <string>点</string>
+                                   </property>
+                                   <property name="checked">
+                                    <bool>true</bool>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QRadioButton" name="rtnPickEdge">
+                                   <property name="text">
+                                    <string>线</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </item>
+                               <item>
+                                <layout class="QHBoxLayout" name="horizontalLayout_14">
+                                 <item>
+                                  <widget class="QRadioButton" name="rtnPickFace">
+                                   <property name="text">
+                                    <string>面</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QRadioButton" name="rtnPickCell">
+                                   <property name="text">
+                                    <string>体</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </item>
+                              </layout>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="btnPickRemoveAll">
+                            <property name="text">
+                             <string>移除所有点选</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                        <item>
+                         <spacer name="verticalSpacer_6">
+                          <property name="orientation">
+                           <enum>Qt::Vertical</enum>
+                          </property>
+                          <property name="sizeType">
+                           <enum>QSizePolicy::Minimum</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>20</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <layout class="QVBoxLayout" name="verticalLayout_14">
+                          <item>
+                           <widget class="QPushButton" name="btnToCut">
+                            <property name="text">
+                             <string>切割</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="btnRemoveLine">
+                            <property name="text">
+                             <string>移除切割线</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QGroupBox" name="groupBox_10">
+                    <property name="title">
+                     <string/>
+                    </property>
+                    <layout class="QVBoxLayout" name="verticalLayout_15">
+                     <property name="leftMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>5</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>5</number>
+                     </property>
+                     <item>
+                      <widget class="QCheckBox" name="ckbCutPlane">
+                       <property name="text">
+                        <string>切片模式</string>
+                       </property>
+                       <property name="checked">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <layout class="QVBoxLayout" name="verticalLayout_16">
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_12">
+                         <item>
+                          <widget class="QLabel" name="label_2">
+                           <property name="text">
+                            <string>X</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <widget class="QSlider" name="cutPlaneX">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_15">
+                         <item>
+                          <widget class="QLabel" name="label_3">
+                           <property name="text">
+                            <string>Y</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <widget class="QSlider" name="cutPlaneY">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_16">
+                         <item>
+                          <widget class="QLabel" name="label_4">
+                           <property name="text">
+                            <string>Z</string>
+                           </property>
+                          </widget>
+                         </item>
+                        </layout>
+                       </item>
+                       <item>
+                        <widget class="QSlider" name="cutPlaneZ">
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="verticalSpacer_3">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>20</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </widget>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout" stretch="0">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
+        </property>
+        <item>
+         <widget class="QGroupBox" name="viewBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="whatsThis">
+           <string>线</string>
+          </property>
+          <property name="title">
+           <string>模型显示</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignHCenter|Qt::AlignTop</set>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+          <property name="checked">
+           <bool>false</bool>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_25" stretch="10,3">
+           <property name="leftMargin">
+            <number>3</number>
+           </property>
+           <property name="topMargin">
+            <number>3</number>
+           </property>
+           <property name="rightMargin">
+            <number>3</number>
+           </property>
+           <property name="bottomMargin">
+            <number>3</number>
+           </property>
+           <item>
+            <widget class="ModelDraw" name="openGLWidget">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_18" stretch="2,8">
+             <item>
+              <widget class="QDockWidget" name="outputWidget_2">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>4</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <stylestrategy>PreferAntialias</stylestrategy>
+                </font>
+               </property>
+               <property name="floating">
+                <bool>false</bool>
+               </property>
+               <property name="features">
+                <set>QDockWidget::NoDockWidgetFeatures</set>
+               </property>
+               <property name="allowedAreas">
+                <set>Qt::AllDockWidgetAreas</set>
+               </property>
+               <property name="windowTitle">
+                <string>网格信息</string>
+               </property>
+               <widget class="QWidget" name="dockWidgetContents_2">
+                <layout class="QVBoxLayout" name="verticalLayout_29">
+                 <item>
+                  <widget class="QLabel" name="showInformation">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                    </font>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="autoFillBackground">
+                    <bool>false</bool>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">background-color: rgb(255, 255, 255，1);</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::NoFrame</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Plain</enum>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDockWidget" name="outputWidget">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>4</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <stylestrategy>PreferAntialias</stylestrategy>
+                </font>
+               </property>
+               <property name="floating">
+                <bool>false</bool>
+               </property>
+               <property name="features">
+                <set>QDockWidget::AllDockWidgetFeatures</set>
+               </property>
+               <property name="allowedAreas">
+                <set>Qt::AllDockWidgetAreas</set>
+               </property>
+               <property name="windowTitle">
+                <string> 日志信息</string>
+               </property>
+               <widget class="QWidget" name="dockWidgetContents">
+                <layout class="QHBoxLayout" name="horizontalLayout_6">
+                 <property name="leftMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>3</number>
+                 </property>
+                 <item>
+                  <widget class="PrintInfo" name="info">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Microsoft JhengHei</family>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="openExternalLinks">
+                    <bool>false</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>35</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="tabletTracking">
+         <bool>false</bool>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+        <property name="flat">
+         <bool>false</bool>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_28">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_24">
+           <property name="sizeConstraint">
+            <enum>QLayout::SetDefaultConstraint</enum>
+           </property>
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>3</number>
+           </property>
+           <property name="bottomMargin">
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="ckbSurfaceGrid">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>黑体</family>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;网格开关&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
+															QPushButton{
+															border-image:url(:/Ticon/Resources/网格-disable.png);
+															}
+															QPushButton:checked{
+															border-image: url(:/Ticon/Resources/网格.png);
+															}
+															QPushButton{
+															min-height:18px;
+															}
+														</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/mesh.png</normaloff>:/Ticon/Resources/mesh.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="ckbCoordCircle">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>黑体</family>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;坐标圈开关&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
+															QPushButton{
+															border-image:url(:/Ticon/Resources/coord-disable.png);
+															}
+															QPushButton:checked{
+															border-image: url(:/Ticon/Resources/Move.png);
+															}
+															QPushButton{
+															min-height:18px;
+															}
+														</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="ckbFaceCull">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>黑体</family>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;面剔除开关&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">
+															QPushButton{
+															border-image: url(:/Ticon/Resources/6610 - View.png);
+															}
+															QPushButton:checked{
+															border-image:url(:/Ticon/Resources/View-disable.png);
+															}
+															QPushButton{
+															min-height:18px;
+															}
+														</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>25</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(199, 199, 199);</string>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="viewpoints">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;点集&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/point.png</normaloff>:/Ticon/Resources/point.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>27</width>
+               <height>27</height>
+              </size>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="viewlines">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;线框&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/3Dmesh.png</normaloff>:/Ticon/Resources/3Dmesh.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>27</width>
+               <height>27</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="viewfill">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;平滑面&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/facefill.png</normaloff>:/Ticon/Resources/facefill.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>27</width>
+               <height>27</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="viewflatfill">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;面片&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/icon (12).png</normaloff>:/Ticon/Resources/icon (12).png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>24</width>
+               <height>24</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="viewlight">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;光照模式&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/point.png</normaloff>:/Ticon/Resources/point.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>27</width>
+               <height>27</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="viewnormal">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;法向模式&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/colorPoint.png</normaloff>:/Ticon/Resources/colorPoint.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line_2">
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(199, 199, 199);</string>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="viewclear">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;删除当前网格&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/Delete.png</normaloff>:/Ticon/Resources/Delete.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>27</width>
+               <height>27</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnLastMesh1">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;选择前一个网格&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/arrow_click_cursor_pointer_icon.png</normaloff>:/Ticon/Resources/arrow_click_cursor_pointer_icon.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btnNextMesh1">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>30</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;选择后一个网格&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="Turbine_Blade.qrc">
+               <normaloff>:/Ticon/Resources/arrow_click_cursor_pointer_icon (1).png</normaloff>:/Ticon/Resources/arrow_click_cursor_pointer_icon (1).png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>60</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ModelDraw</class>
+   <extends>QOpenGLWidget</extends>
+   <header location="global">ModelDraw.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PrintInfo</class>
+   <extends>QTextBrowser</extends>
+   <header location="global">PrintInfo.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="Turbine_Blade.qrc"/>
+ </resources>
+ <connections/>
+</ui>
