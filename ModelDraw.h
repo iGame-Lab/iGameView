@@ -237,7 +237,7 @@ protected:
 	void DrawStyle(void);// 绘制样式：点、线、面片、平滑面
 	void ColorStyle(void);// 着色样式：模拟光照着色、根据点法向着色
     // 渲染相关
-    void updateMeshModel();
+    void updateMeshModel(bool isFocus = true);
     void updateCurrentMesh();
     void loadShader();
     void drawTriMesh();

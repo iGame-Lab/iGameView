@@ -162,8 +162,19 @@ void ModelDraw::changeCurrentMeshToLast() {
 	update();
 }
 
-void ModelDraw::updateMeshModel() {
+void ModelDraw::updateMeshModel(bool isFocus) {
 	if (currentModel->structure == NURBS) {
+
+		if (currentModel->pick_vertices.empty() == false) {
+			int id = 0;
+			for (auto& pv : currentModel->pick_vertices) {
+				if(id % 3 == 0) pv = pv / 2 * init_max_gap + centerX;
+				else if (id % 3 == 1) pv = pv / 2 * init_max_gap + centerY;
+				else if (id % 3 == 2) pv = pv / 2 * init_max_gap + centerZ;
+				id++;
+			}
+		}
+
 		minX = std::numeric_limits<double>::max(); maxX = -std::numeric_limits<double>::max();
 		minY = std::numeric_limits<double>::max(); maxY = -std::numeric_limits<double>::max();
 		minZ = std::numeric_limits<double>::max(); maxZ = -std::numeric_limits<double>::max();
@@ -184,7 +195,18 @@ void ModelDraw::updateMeshModel() {
 		init_max_gap = 0.01;
 		init_max_gap = fmax(maxX - minX, maxY - minY);
 		init_max_gap = fmax(init_max_gap, maxZ - minZ);
-		SetScenePosition(Vector3d(0, 0, 0), 1.2f * radius);
+
+
+		if (!currentModel->pick_vertices.empty()) {
+			int id = 0;
+			for (auto& pv : currentModel->pick_vertices) {
+				if (id % 3 == 0)  pv = (pv - centerX) / init_max_gap * 2;
+				else if (id % 3 == 1) pv = (pv - centerY) / init_max_gap * 2;
+				else if(id % 3 == 2) pv = (pv - centerZ) / init_max_gap * 2;
+				id++;
+			}
+		}
+		if(isFocus)	SetScenePosition(Vector3d(0, 0, 0), 1.2f * radius);
 		update();
 	}
 	else {
@@ -244,9 +266,9 @@ void ModelDraw::updateCurrentMesh() {
 						auto v3 = patch->m_ControlPoints[u_id + (v_id + 1) * u_control_cnt];
 						std::vector<Point*> tempV{ &v0, &v1, &v2, &v3, &v0, &v2 };
 						for (auto v : tempV) {
-							currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-							currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-							currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+							currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+							currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+							currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 							currentModel->vertices.push_back(0);
 							currentModel->vertices.push_back(0);
@@ -271,9 +293,9 @@ void ModelDraw::updateCurrentMesh() {
 						auto v3 = patch->getPointAtParam(std::vector<double>{u_sample* sample_gap, (v_sample + 1)* sample_gap});
 						std::vector<Point*> tempV{ &v0, &v1, &v2, &v3, &v0, &v2 };
 						for (auto v : tempV) {
-							currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-							currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-							currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+							currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+							currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+							currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 							currentModel->vertices.push_back(0);
 							currentModel->vertices.push_back(0);
@@ -304,9 +326,9 @@ void ModelDraw::updateCurrentMesh() {
 					std::vector<Point*> tempV{ &v0 };
 					for (auto v : tempV)
 					{
-						currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-						currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-						currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+						currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+						currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+						currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 						currentModel->vertices.push_back(0);
 						currentModel->vertices.push_back(0);
@@ -327,9 +349,9 @@ void ModelDraw::updateCurrentMesh() {
 
 						std::vector<Point*> tempV{ &v0 };
 						for (auto v : tempV) {
-							currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-							currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-							currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+							currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+							currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+							currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 							currentModel->vertices.push_back(0);
 							currentModel->vertices.push_back(0);
@@ -378,9 +400,9 @@ void ModelDraw::updateCurrentMesh() {
 								for (auto vid : edge) {
 									auto v = patch->m_ControlPoints[cube_id[vid]];
 									//auto v = cube[cube_id[vid]];
-									currentModel->vertices.push_back((v[0] - minX) / (maxX - minX) * 2 - 1.);
-									currentModel->vertices.push_back((v[1] - minY) / (maxY - minY) * 2 - 1.);
-									currentModel->vertices.push_back((v[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+									currentModel->vertices.push_back((v[0] - centerX) / init_max_gap * 2);
+									currentModel->vertices.push_back((v[1] - centerY) / init_max_gap * 2);
+									currentModel->vertices.push_back((v[2] - centerZ) / init_max_gap * 2);
 									//currentModel->vertices.push_back(v[0]);
 									//currentModel->vertices.push_back(v[1]);
 									//currentModel->vertices.push_back(v[2]);
@@ -420,9 +442,9 @@ void ModelDraw::updateCurrentMesh() {
 
 							std::vector<Point*> tempV{ &v0, &v1, &v2, &v3, &v0, &v2 };
 							for (auto v : tempV) {
-								currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+								currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 								currentModel->vertices.push_back(0);
 								currentModel->vertices.push_back(0);
@@ -446,9 +468,9 @@ void ModelDraw::updateCurrentMesh() {
 
 							std::vector<Point*> tempV{ &v0, &v1, &v2, &v3, &v0, &v2 };
 							for (auto v : tempV) {
-								currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+								currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 								currentModel->vertices.push_back(0);
 								currentModel->vertices.push_back(0);
@@ -471,9 +493,9 @@ void ModelDraw::updateCurrentMesh() {
 
 							std::vector<Point*> tempV{ &v0, &v1, &v2, &v3, &v0, &v2 };
 							for (auto v : tempV) {
-								currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+								currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 								currentModel->vertices.push_back(0);
 								currentModel->vertices.push_back(0);
@@ -496,9 +518,9 @@ void ModelDraw::updateCurrentMesh() {
 
 							std::vector<Point*> tempV{ &v0, &v1, &v2, &v3, &v0, &v2 };
 							for (auto v : tempV) {
-								currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+								currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 								currentModel->vertices.push_back(0);
 								currentModel->vertices.push_back(0);
@@ -521,9 +543,9 @@ void ModelDraw::updateCurrentMesh() {
 
 							std::vector<Point*> tempV{ &v0, &v1, &v2, &v3, &v0, &v2 };
 							for (auto v : tempV) {
-								currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+								currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 								currentModel->vertices.push_back(0);
 								currentModel->vertices.push_back(0);
@@ -547,9 +569,9 @@ void ModelDraw::updateCurrentMesh() {
 
 							std::vector<Point*> tempV{ &v0, &v1, &v2, &v3, &v0, &v2 };
 							for (auto v : tempV) {
-								currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+								currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 								currentModel->vertices.push_back(0);
 								currentModel->vertices.push_back(0);
@@ -591,7 +613,7 @@ void ModelDraw::updateCutMesh() {
 					minZ = std::min(minZ, geo_point[2]), maxZ = std::max(maxZ, geo_point[2]);
 				}
 			}*/
-
+			updateMeshModel(false);
 			double draw_min_x = cutX * (maxX - minX) + minX;
 			double draw_min_y = cutY * (maxY - minY) + minY;
 			double draw_min_z = cutZ * (maxZ - minZ) + minZ;
@@ -643,9 +665,9 @@ void ModelDraw::updateCutMesh() {
 							auto v3 = patch->m_ControlPoints[u_id + (v_id + 1) * u_control_cnt];
 							std::vector<Point*> tempV{ &v0, &v1, &v2, &v3, &v0, &v2 };
 							for (auto v : tempV) {
-								currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-								currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+								currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+								currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 								currentModel->vertices.push_back(0);
 								currentModel->vertices.push_back(0);
@@ -682,9 +704,9 @@ void ModelDraw::updateCutMesh() {
 							{
 								for (auto v : tempV) {
 
-									currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-									currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-									currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+									currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+									currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+									currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 									currentModel->vertices.push_back(0);
 									currentModel->vertices.push_back(0);
@@ -733,9 +755,9 @@ void ModelDraw::updateCutMesh() {
 									for (auto vid : edge)
 									{
 										auto v = patch->m_ControlPoints[cube_id[vid]];
-										currentModel->vertices.push_back((v[0] - minX) / (maxX - minX) * 2 - 1.);
-										currentModel->vertices.push_back((v[1] - minY) / (maxY - minY) * 2 - 1.);
-										currentModel->vertices.push_back((v[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+										currentModel->vertices.push_back((v[0] - centerX) / init_max_gap * 2);
+										currentModel->vertices.push_back((v[1] - centerY) / init_max_gap * 2);
+										currentModel->vertices.push_back((v[2] - centerZ) / init_max_gap * 2);
 
 										currentModel->vertices.push_back(0);
 										currentModel->vertices.push_back(0);
@@ -746,7 +768,10 @@ void ModelDraw::updateCutMesh() {
 						}
 					}
 				}
-				int SAMPLE_NUM = 10;
+				int SAMPLE_NUM = (1000 / currentModel->nurbs_patchs.m_Geometry.size());
+				SAMPLE_NUM = std::max(SAMPLE_NUM, 1);
+				SAMPLE_NUM = std::min(SAMPLE_NUM, 10);
+				std::cout << "SAMPLE_NUM = " << SAMPLE_NUM << std::endl;
 				double sample_gap = 1.f / SAMPLE_NUM;
 				for (auto& patch : currentModel->nurbs_patchs.m_Geometry)
 				{
@@ -800,9 +825,9 @@ void ModelDraw::updateCutMesh() {
 									for (auto v : tempV2)
 									{
 
-										currentModel->vertices.push_back(((*v)[0] - minX) / (maxX - minX) * 2 - 1.);
-										currentModel->vertices.push_back(((*v)[1] - minY) / (maxY - minY) * 2 - 1.);
-										currentModel->vertices.push_back(((*v)[2] - minZ) / (maxZ - minZ) * 2 - 1.);
+										currentModel->vertices.push_back(((*v)[0] - centerX) / init_max_gap * 2);
+										currentModel->vertices.push_back(((*v)[1] - centerY) / init_max_gap * 2);
+										currentModel->vertices.push_back(((*v)[2] - centerZ) / init_max_gap * 2);
 
 										currentModel->vertices.push_back(0);
 										currentModel->vertices.push_back(0);
@@ -1211,14 +1236,14 @@ void ModelDraw::PickItemTranslate() {
 
 			for (auto& patch : currentModel->nurbs_patchs.m_Geometry) {
 				for (auto& C : patch->m_ControlPoints) {
-					double xx = (C[0] - minX) / (maxX - minX) * 2 - 1.;
-					double yy = (C[1] - minY) / (maxY - minY) * 2 - 1.;
-					double zz = (C[2] - minZ) / (maxZ - minZ) * 2 - 1.;
+					double xx = (C[0] - centerX) / init_max_gap * 2;
+					double yy = (C[1] - centerY) / init_max_gap * 2;
+					double zz = (C[2] - centerZ) / init_max_gap * 2;
 
 					if (fabs(xx - OriPoint.x()) + fabs(yy - OriPoint.y()) + fabs(zz - OriPoint.z()) < 1e-5) {
-						C[0] = (QpickPoint.x() + 1.) / 2 * (maxX - minX) + minX;
-						C[1] = (QpickPoint.y() + 1.) / 2 * (maxY - minY) + minY;
-						C[2] = (QpickPoint.z() + 1.) / 2 * (maxZ - minZ) + minZ;
+						C[0] = (QpickPoint.x()) / 2 * init_max_gap + centerX;
+						C[1] = (QpickPoint.y()) / 2 * init_max_gap + centerY;
+						C[2] = (QpickPoint.z()) / 2 * init_max_gap + centerZ;
 					}
 				}
 			}
